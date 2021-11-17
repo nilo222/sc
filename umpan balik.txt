@@ -1,0 +1,84 @@
+chance = math.random(8000,8500)/100
+bigchance = math.random(7500,8500)/100
+smallchance = 100 - bigchance
+
+-- Bet standar di ganti di sini
+base = 0.1
+-- gunakan 0.0001 agar lebih aman
+
+bethigh = false
+target = balance*1.2
+go = true
+wincount = 0
+losecount = 0
+i = balance
+k = 900
+nextbet = base
+a = base
+multi = 1.3
+function dobet()
+
+-- ini fitur stop lose
+if currentstreak <= -15 then
+-- script akan otomatis berhenti jika maximal lose streak
+-- terpenuhi
+stop(); 
+end
+
+
+if balance > target then
+	stop()
+end
+if wincount == 6 then
+	resetseed()  
+	bethigh=!bethigh
+	wincount = 0
+end
+if win and go then
+    wincount+=1
+    nextbet = base
+    bigchance = math.random(7500,8500)/100
+    chance = bigchance
+    losecount = 0
+    a = base
+    multi = 1
+    go = false
+end
+ if (!win) then	
+	nextbet = previousbet*multi
+	losecount+=1	
+end
+if chance >= 75 and (!win) then	
+    bethigh=!bethigh
+        smallchance = 110 - bigchance
+	if smallchance < 30 then
+		multi = 1.43568
+	end
+	if smallchance >= 30 then
+		multi = 1.6365
+	end
+    go = true
+
+    chance = smallchance
+    nextbet = a*multi
+end
+if losecount >= 1 then
+    go = true
+    chance = smallchance
+end
+if losecount == 5 then
+    losecount = 0
+    go        = false
+    a         = previousbet
+    nextbet   = base
+    chance    = bigchance
+end
+print(" ")
+print("multi: "..multi)
+print("bigchance: "..bigchance)
+print("smallchance: "..smallchance)
+print(" ")
+end
+end
+end
+end
