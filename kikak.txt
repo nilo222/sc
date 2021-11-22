@@ -1,5 +1,5 @@
 chance=70
-basebet=0.1
+basebet=0.01
 nextbet=basebet
 target=balance*100000000.1000
 bethigh=true
@@ -10,17 +10,17 @@ function dobet()
 if balance > target then stop()
 end
 print('check = ' .. check)
-chance=math.random(60,70)
+chance=math.random(40,49)
 if win then
 check+=1
-if check > 3 then
+if check > 2 then
 check = 0
 nextbet=basebet
 else
-nextbet=previousbet*0.81
+nextbet=previousbet*0.3
 end
 else
 check=0
-nextbet=previousbet*1.83
+nextbet=previousbet*1.6
 end
 end
