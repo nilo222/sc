@@ -1,7 +1,7 @@
 chance=70
 basebet=0.0005
 nextbet=basebet
-target=balance*100000000.1000
+target=balance + 1000000000
 bethigh=true
 enablezz=true
 enablesrc=false
