@@ -1,5 +1,5 @@
 chance=70
-basebet=0.01
+basebet=0.0005
 nextbet=basebet
 target=balance*100000000.1000
 bethigh=true
@@ -17,7 +17,7 @@ if check > 2 then
 check = 0
 nextbet=basebet
 else
-nextbet=previousbet*0.25
+nextbet=previousbet*0.31
 end
 else
 check=0
